@@ -20,20 +20,15 @@ kubectl apply -f echo-server.yaml
 kubectl apply -f ingress.yaml
 ```
 
-5. Apply nginx config
-```shell
-kubectl apply -f nginx-config.yaml
-```
-
-6. Modify /etc/hosts
+5. Modify /etc/hosts
 Add `127.0.0.1 echo.test` in `/etc/hosts` 
 
-7. Run reverse-proxy service
+6. Run reverse-proxy service
 ```shell
 go run main.go
 ```
 
-8. Verify
+7. Verify
 * Ingress returns compressed response
 ```shell
 curl -H "Accept-Encoding: gzip" -H "Content-Type: application/json" -d '{"test": "data"}' --compressed  http://echo.test -v
